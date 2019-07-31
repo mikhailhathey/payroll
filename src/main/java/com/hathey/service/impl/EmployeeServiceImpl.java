@@ -6,6 +6,8 @@ import ac.za.cput.repository.user.EmployeeRepository;
 import ac.za.cput.repository.user.impl.EmployeeRepositoryImpl;
 import ac.za.cput.service.EmployeeService;
 
+import java.util.Set;
+
 public class EmployeeServiceImpl implements EmployeeService {
 
     private static EmployeeService service = null;
@@ -40,12 +42,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return this.employeeRepository.read(s);
     }
 
-    @Override
+    /*@Override
     public Employee saveEmployee(String firstName, String lastName, String gender){
         Employee e = EmployeeFactory.buildEmployee(firstName, lastName);
         //get gender if exist
 
         create(e);
         return e;
+    }*/
+
+    @Override
+    public void getAll() {
+        Set<Employee> employee = this.employeeRepository.getAll();
+        System.out.println("In getall, all = " + employee);
     }
 }

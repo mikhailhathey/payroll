@@ -12,11 +12,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     private static EmployeeRepository repository = null;
 
     private Set<Employee> employees;
-    private Set<EmployeeGender> employeeGenders;
+
 
     private EmployeeRepositoryImpl(){
         this.employees = new HashSet<>();
-        this.employeeGenders = new HashSet<>();
     }
 
     public static EmployeeRepository getRepository(){
@@ -55,5 +54,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public Employee read(final String s) {
         return this.employees.stream().filter(e -> e.getEmployeeNumber().equals(s)).findAny().orElse(null);
+    }
+
+    @Override
+    public Set<Employee> getAll() {
+        return this.employees;
     }
 }
