@@ -1,4 +1,4 @@
-package ac.za.cput.controller;
+package com.hathey.controller;
 
 public class IndexController {
 

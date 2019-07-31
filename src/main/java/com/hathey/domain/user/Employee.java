@@ -1,6 +1,4 @@
-package ac.za.cput.domain.user;
-
-import ac.za.cput.domain.demography.Gender;
+package com.hathey.domain.user;
 
 public class Employee {
 

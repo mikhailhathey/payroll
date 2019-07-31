@@ -1,6 +1,6 @@
-package ac.za.cput.factory.user;
+package com.hathey.factory.user;
 
-import ac.za.cput.domain.user.EmployeeGender;
+import com.hathey.domain.user.EmployeeGender;
 
 public class EmployeeGenderFactory {
 

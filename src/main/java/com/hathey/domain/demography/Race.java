@@ -1,4 +1,4 @@
-package ac.za.cput.domain.demography;
+package com.hathey.domain.demography;
 
 public class Race {
 

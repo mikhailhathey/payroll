@@ -1,8 +1,7 @@
-package ac.za.cput.repository.user.impl;
+package com.hathey.repository.user.impl;
 
-import ac.za.cput.domain.user.EmployeeGender;
-import ac.za.cput.repository.user.EmployeeGenderRepository;
-import ac.za.cput.repository.user.EmployeeGenderRepository;
+import com.hathey.domain.user.EmployeeGender;
+import com.hathey.repository.user.EmployeeGenderRepository;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,9 +1,7 @@
-package ac.za.cput.factory.user;
+package com.hathey.factory.user;
 
-import ac.za.cput.domain.demography.Gender;
-import ac.za.cput.domain.user.Employee;
-import ac.za.cput.factory.demography.GenderFactory;
-import ac.za.cput.util.Misc;
+import com.hathey.domain.user.Employee;
+import com.hathey.util.Misc;
 
 public class EmployeeFactory {
 

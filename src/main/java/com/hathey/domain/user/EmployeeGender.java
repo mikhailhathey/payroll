@@ -1,4 +1,4 @@
-package ac.za.cput.domain.user;
+package com.hathey.domain.user;
 
 public class EmployeeGender {
 

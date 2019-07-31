@@ -1,7 +1,7 @@
-package ac.za.cput.repository.user;
+package com.hathey.repository.user;
 
-import ac.za.cput.domain.user.Employee;
-import ac.za.cput.repository.IRepository;
+import com.hathey.domain.user.Employee;
+import com.hathey.repository.IRepository;
 
 import java.util.Set;
 

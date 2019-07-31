@@ -1,4 +1,4 @@
-package ac.za.cput.repository;
+package com.hathey.repository;
 
 public interface IRepository<T, ID> {
     T create (T t);

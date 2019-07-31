@@ -1,4 +1,4 @@
-package ac.za.cput.service;
+package com.hathey.service;
 
 public interface IService <T, ID> {
     T create (T t);

@@ -1,15 +1,14 @@
-package ac.za.cput.repository.user.impl;
+package com.hathey.repository.user.impl;
 
-import ac.za.cput.domain.user.Employee;
-import ac.za.cput.domain.user.EmployeeGender;
-import ac.za.cput.repository.user.EmployeeRepository;
+import com.hathey.domain.user.Employee;
+import com.hathey.repository.user.EmployeeRepository;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-    private static EmployeeRepository repository = null;
+    private static EmployeeRepository employeeRepository = null;
 
     private Set<Employee> employees;
 
@@ -19,8 +18,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     public static EmployeeRepository getRepository(){
-        if (repository == null) repository = new EmployeeRepositoryImpl();
-        return repository;
+        if (employeeRepository == null) employeeRepository = new EmployeeRepositoryImpl();
+        return employeeRepository;
     }
 
     @Override

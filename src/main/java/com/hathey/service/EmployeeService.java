@@ -1,6 +1,6 @@
-package ac.za.cput.service;
+package com.hathey.service;
 
-import ac.za.cput.domain.user.Employee;
+import com.hathey.domain.user.Employee;
 
 public interface EmployeeService extends IService<Employee, String> {
 

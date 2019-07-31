@@ -1,7 +1,7 @@
-package ac.za.cput.controller.user;
+package com.hathey.controller.user;
 
-import ac.za.cput.domain.user.Employee;
-import ac.za.cput.service.EmployeeService;
+import com.hathey.domain.user.Employee;
+import com.hathey.service.EmployeeService;
 
 public class EmployeeController {
     private EmployeeService service;

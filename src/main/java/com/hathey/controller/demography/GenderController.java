@@ -1,4 +1,4 @@
-package ac.za.cput.controller.demography;
+package com.hathey.controller.demography;
 
 public class GenderController {
 

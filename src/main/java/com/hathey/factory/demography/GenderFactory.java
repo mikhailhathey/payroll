@@ -1,7 +1,7 @@
-package ac.za.cput.factory.demography;
+package com.hathey.factory.demography;
 
-import ac.za.cput.domain.demography.Gender;
-import ac.za.cput.util.Misc;
+import com.hathey.domain.demography.Gender;
+import com.hathey.util.Misc;
 
 public class GenderFactory {
 

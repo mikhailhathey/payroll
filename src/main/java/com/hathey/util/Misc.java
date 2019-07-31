@@ -1,4 +1,4 @@
-package ac.za.cput.util;
+package com.hathey.util;
 
 import java.util.UUID;
 

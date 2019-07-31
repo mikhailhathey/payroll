@@ -1,10 +1,9 @@
-package ac.za.cput.service.impl;
+package com.hathey.service.impl;
 
-import ac.za.cput.domain.user.Employee;
-import ac.za.cput.factory.user.EmployeeFactory;
-import ac.za.cput.repository.user.EmployeeRepository;
-import ac.za.cput.repository.user.impl.EmployeeRepositoryImpl;
-import ac.za.cput.service.EmployeeService;
+import com.hathey.domain.user.Employee;
+import com.hathey.repository.user.EmployeeRepository;
+import com.hathey.repository.user.impl.EmployeeRepositoryImpl;
+import com.hathey.service.EmployeeService;
 
 import java.util.Set;
 
