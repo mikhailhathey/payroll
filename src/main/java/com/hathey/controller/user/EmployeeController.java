@@ -1,7 +1,7 @@
 package com.hathey.controller.user;
 
 import com.hathey.domain.user.Employee;
-import com.hathey.service.EmployeeService;
+import com.hathey.service.user.EmployeeService;
 
 public class EmployeeController {
     private EmployeeService service;

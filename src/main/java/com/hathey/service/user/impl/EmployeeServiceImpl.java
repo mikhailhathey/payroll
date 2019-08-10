@@ -1,9 +1,9 @@
-package com.hathey.service.impl;
+package com.hathey.service.user.impl;
 
 import com.hathey.domain.user.Employee;
 import com.hathey.repository.user.EmployeeRepository;
 import com.hathey.repository.user.impl.EmployeeRepositoryImpl;
-import com.hathey.service.EmployeeService;
+import com.hathey.service.user.EmployeeService;
 
 import java.util.Set;
 
