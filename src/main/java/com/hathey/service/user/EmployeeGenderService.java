@@ -1,4 +1,8 @@
 package com.hathey.service.user;
 
-public interface EmployeeGenderService {
+import com.hathey.domain.user.EmployeeGender;
+import com.hathey.service.IService;
+
+public interface EmployeeGenderService extends IService<EmployeeGender, String> {
+    void getAll();
 }

@@ -1,4 +1,6 @@
 package com.hathey.service.demography.impl;
 
-public class GenderServiceImpl {
+import com.hathey.service.demography.GenderService;
+
+public class GenderServiceImpl implements GenderService {
 }
