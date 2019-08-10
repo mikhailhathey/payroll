@@ -5,12 +5,15 @@ import com.hathey.factory.demography.GenderFactory;
 import com.hathey.repository.demography.impl.GenderRepositoryImpl;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GenderServiceImplTest {
     private GenderRepositoryImpl repository;
     private Gender gender;

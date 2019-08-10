@@ -21,6 +21,4 @@ public class EmployeeController {
     public Employee read(String s){
         return service.read(s);
     }
-
-
 }
