@@ -1,4 +1,4 @@
-package com.hathey.service;
+package com.hathey.service.user;
 
 import com.hathey.domain.user.Employee;
 import com.hathey.factory.user.EmployeeFactory;
@@ -9,8 +9,9 @@ import org.junit.Test;
 
 import java.util.Set;
 
-public class EmployeeServiceTest {
+import static org.junit.Assert.*;
 
+public class EmployeeServiceTest {
     private EmployeeRepository repository;
     private Employee employee;
 
@@ -26,4 +27,5 @@ public class EmployeeServiceTest {
         Set<Employee> employee = this.repository.getAll();
         System.out.println("In getall, all = " + employee);
     }
+
 }
