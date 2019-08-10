@@ -50,9 +50,10 @@ public class GenderServiceImpl implements GenderService {
     }*/
 
     @Override
-    public void getAll() {
+    public Set<Gender> getAll() {
         Set<Gender> gender = this.genderRepository.getAll();
         System.out.println("In getall, all = " + gender);
+        return gender;
     }
 
 }

@@ -51,8 +51,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }*/
 
     @Override
-    public void getAll() {
+    public Set<Employee> getAll() {
         Set<Employee> employee = this.employeeRepository.getAll();
         System.out.println("In getall, all = " + employee);
+        return employee;
     }
 }

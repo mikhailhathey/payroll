@@ -51,8 +51,9 @@ public class EmployeeGenderServiceImpl implements EmployeeGenderService {
     }*/
 
     @Override
-    public void getAll() {
+    public Set<EmployeeGender> getAll() {
         Set<EmployeeGender> employeeGender = this.employeeGenderRepository.getAll();
         System.out.println("In getall, all = " + employeeGender);
+        return employeeGender;
     }
 }

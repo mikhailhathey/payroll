@@ -50,9 +50,10 @@ public class RaceServiceImpl implements RaceService {
     }*/
 
     @Override
-    public void getAll() {
+    public Set<Race> getAll() {
         Set<Race> race = this.raceRepository.getAll();
         System.out.println("In getall, all = " + race);
+        return race;
     }
 
 }
