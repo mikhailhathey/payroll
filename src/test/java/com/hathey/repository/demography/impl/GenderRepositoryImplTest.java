@@ -41,7 +41,7 @@ public class GenderRepositoryImplTest {
         Assert.assertSame(created, this.gender);*/
         Gender e = GenderFactory.buildGender("Male");
         Gender savedE = this.genderRepository.create(e);
-        Assert.assertEquals(1, this.genderRepository.getAll().size());
+        Assert.assertEquals(2, this.genderRepository.getAll().size());
     }
 
     @Test

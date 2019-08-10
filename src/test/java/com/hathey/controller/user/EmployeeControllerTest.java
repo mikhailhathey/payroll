@@ -30,11 +30,12 @@ public class EmployeeControllerTest {
 
         Gender gender = GenderFactory.buildGender("Male");
         Race race = RaceFactory.buildRace("Indian");
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender("123", "Male");
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender("123", "123");
         Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
 
-        employeeController.create(employee.getEmployeeNumber(), employee.getEmployeeFirstName() ,employee.getEmployeeLastName(), gender.getId(),race.getId());
+        //employeeController.create(employee.getEmployeeNumber(), employee.getEmployeeFirstName() ,employee.getEmployeeLastName(), gender.getId(),race.getId());
 
+        employeeController.create("Mikhail", "Hathey", 123, 456);
 
     }
 }

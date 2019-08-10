@@ -24,7 +24,7 @@ public class EmployeeServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        this.repository = EmployeeRepositoryImpl.getRepository();
+        this.repository = (EmployeeRepositoryImpl) EmployeeRepositoryImpl.getRepository();
         this.employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
     }
 

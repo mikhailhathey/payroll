@@ -24,7 +24,7 @@ public class GenderServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        this.repository = GenderRepositoryImpl.getRepository();
+        this.repository = (GenderRepositoryImpl) GenderRepositoryImpl.getRepository();
         this.gender = GenderFactory.buildGender("Indian");
     }
 
