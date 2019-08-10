@@ -43,6 +43,13 @@ public class Race {
         public Race build(){
             return new Race(this);
         }
+
+        public Builder copy(Race race){
+            this.id = id;
+            this.description = description;
+
+            return this;
+        }
     }
 
 }

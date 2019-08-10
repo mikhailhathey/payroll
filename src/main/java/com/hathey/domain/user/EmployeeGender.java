@@ -56,6 +56,10 @@ public class EmployeeGender {
             return this;
         }
 
+        public EmployeeGender build(){
+            return new EmployeeGender(this);
+        }
+
         public Builder copy(EmployeeGender employeeGender){
             this.employeeNumber = employeeNumber;
             this.genderId = genderId;

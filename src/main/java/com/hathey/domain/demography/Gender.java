@@ -43,5 +43,12 @@ public class Gender {
         public Gender build(){
             return new Gender(this);
         }
+
+        public Builder copy(Gender gender){
+            this.id = id;
+            this.description = description;
+
+            return this;
+        }
     }
 }
