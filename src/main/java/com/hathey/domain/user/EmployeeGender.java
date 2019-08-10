@@ -2,9 +2,15 @@ package com.hathey.domain.user;
 
 public class EmployeeGender {
 
-    //Convert to Builder pattern
 
     private String employeeNumber, genderId;
+
+    private EmployeeGender() {}
+
+    public EmployeeGender(Builder builder){
+        this.employeeNumber = builder.employeeNumber;
+        this.genderId = builder.genderId;
+    }
 
     public String getEmployeeNumber() {
         return employeeNumber;
@@ -34,5 +40,28 @@ public class EmployeeGender {
                 "employeeNumber='" + employeeNumber + '\'' +
                 ", genderId='" + genderId + '\'' +
                 '}';
+    }
+
+    public static class Builder{
+        private String employeeNumber, genderId;
+
+        public Builder employeeNumber(String employeeNumber) {
+            this.employeeNumber = employeeNumber;
+
+            return this;
+        }
+
+        public Builder genderId() {
+            this.genderId = genderId;
+            return this;
+        }
+
+        public Builder copy(EmployeeGender employeeGender){
+            this.employeeNumber = employeeNumber;
+            this.genderId = genderId;
+
+            return this;
+        }
+
     }
 }
