@@ -2,6 +2,18 @@ package com.hathey.domain.user;
 
 public class Employee {
 
+    public void setEmployeeNumber(String employeeNumber) {
+        this.employeeNumber = employeeNumber;
+    }
+
+    public void setEmployeeFirstName(String employeeFirstName) {
+        this.employeeFirstName = employeeFirstName;
+    }
+
+    public void setEmployeeLastName(String employeeLastName) {
+        this.employeeLastName = employeeLastName;
+    }
+
     private String employeeNumber, employeeFirstName, employeeLastName;
 
 

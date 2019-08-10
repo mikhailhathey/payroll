@@ -6,6 +6,14 @@ public class Gender {
 
     private Gender(){}
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Gender(Builder builder){
         this.id = builder.id;
         this.description = builder.description;

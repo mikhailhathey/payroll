@@ -26,8 +26,10 @@ public class EmployeeRepositoryImplTest {
 
     @Before
     public void setUp() throws Exception {
+        /*this.employeeRepository = EmployeeRepositoryImpl.getRepository();
+        this.employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");*/
+
         this.employeeRepository = EmployeeRepositoryImpl.getRepository();
-        this.employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
     }
 
     @After
@@ -42,43 +44,87 @@ public class EmployeeRepositoryImplTest {
         System.out.println("In create, created = " + created);
         d_getAll();
         Assert.assertSame(created, this.employee);*/
-        Employee e = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+        /*Employee e = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
         Employee savedE = this.employeeRepository.create(e);
-        Assert.assertEquals(1, this.employeeRepository.getAll().size());
+        Assert.assertEquals(2, this.employeeRepository.getAll().size());*/
+
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        employeeRepository.create(employee);
+
+        Employee inRepo = employeeRepository.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void b_update() {
-        String newname = "New Test Employee Name created";
+        /*String newname = "New Test Employee Name created";
         Employee employee = new Employee.Builder().copy(getSavedEmployee()).employeeFirstName(newname).build();
         System.out.println("In update, about to be updated = " + employee);
         Employee updated = this.employeeRepository.update(employee);
         System.out.println("In update, updated = " + updated);
         Assert.assertSame(newname, updated.getEmployeeFirstName());
-        d_getAll();
+        d_getAll();*/
+
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        employeeRepository.create(employee);
+        Employee inRepo = employeeRepository.read(employee.getEmployeeNumber());
+
+        employee.setEmployeeFirstName("Mikhail");
+
+        employeeRepository.update(employee);
+
+        Assert.assertEquals(employee.getEmployeeNumber(), inRepo.getEmployeeNumber());
     }
 
     @Test
     public void e_delete() {
-        Employee savedEmployee = getSavedEmployee();
+        /*Employee savedEmployee = getSavedEmployee();
         this.employeeRepository.delete(savedEmployee.getEmployeeNumber());
-        d_getAll();
+        d_getAll();*/
+
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        employeeRepository.create(employee);
+
+        Employee inRepo = employeeRepository.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
+
+        employeeRepository.delete(employee.getEmployeeNumber());
+
+        Employee deleted = employeeRepository.read(employee.getEmployeeNumber());
+
+        Assert.assertNull(deleted);
     }
 
     @Test
     public void c_read() {
-        Employee savedEmployee = getSavedEmployee();
+        /*Employee savedEmployee = getSavedEmployee();
         System.out.println("In read, employee id = " + savedEmployee.getEmployeeNumber());
         Employee read = this.employeeRepository.read(savedEmployee.getEmployeeNumber());
         System.out.println("In read, read = " + read);
         d_getAll();
-        Assert.assertEquals(savedEmployee, read);
+        Assert.assertEquals(savedEmployee, read);*/
+
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        employeeRepository.create(employee);
+
+        Employee inRepo = employeeRepository.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void d_getAll() {
-        Set<Employee> all = this.employeeRepository.getAll();
+        /*Set<Employee> all = this.employeeRepository.getAll();
         System.out.println("In getAll, all = " + all);
-        //Assert.assertSame(1, all.size());
+        //Assert.assertSame(1, all.size());*/
+
+        Set<Employee> employeeSet = employeeRepository.getAll();
+        Assert.assertNotNull(employeeSet);
     }
 }

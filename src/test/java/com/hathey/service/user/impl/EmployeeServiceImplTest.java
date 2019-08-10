@@ -3,6 +3,7 @@ package com.hathey.service.user.impl;
 import com.hathey.domain.user.Employee;
 import com.hathey.factory.user.EmployeeFactory;
 import com.hathey.repository.user.impl.EmployeeRepositoryImpl;
+import com.hathey.service.user.EmployeeService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -17,52 +18,71 @@ import static org.junit.Assert.*;
 public class EmployeeServiceImplTest {
     private EmployeeRepositoryImpl repository;
     private Employee employee;
+    private EmployeeService service;
 
-    private Employee getSaved(){
-        return this.repository.getAll().iterator().next();
-    }
 
     @Before
     public void setUp() throws Exception {
-        this.repository = (EmployeeRepositoryImpl) EmployeeRepositoryImpl.getRepository();
-        this.employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+        this.service = EmployeeServiceImpl.getEmployeeService();
     }
 
     @Test
     public void a_create() {
-        Employee created = this.repository.create(this.employee);
-        System.out.println("In create, created = " + created);
-        Assert.assertNotNull(created);
-        Assert.assertSame(created, this.employee);
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        service.create(employee);
+
+        Employee inRepo = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void c_update() {
-        String newEmployeeName = "Mikhail";
-        Employee updated = new Employee.Builder().copy(getSaved()).employeeFirstName(newEmployeeName).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newEmployeeName, updated.getEmployeeFirstName());
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        service.create(employee);
+        Employee inRepo = service.read(employee.getEmployeeNumber());
+
+        employee.setEmployeeFirstName("Ismail");
+
+        service.update(employee);
+
+        Assert.assertEquals(employee.getEmployeeNumber(), inRepo.getEmployeeNumber());
     }
 
     @Test
     public void e_delete() {
-        Employee saved = getSaved();
-        this.repository.delete(saved.getEmployeeFirstName());
-        d_getAll();
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        service.create(employee);
+
+        Employee inRepo = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
+
+        service.delete(employee.getEmployeeNumber());
+
+        Employee deleted = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNull(deleted);
     }
 
     @Test
     public void b_read() {
-        Employee saved = getSaved();
-        Employee read = this.repository.read(saved.getEmployeeFirstName());
-        System.out.println("In read, read = "+ read);
-        Assert.assertSame(read, saved);
+        Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
+
+        service.create(employee);
+
+        Employee inRepo = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void d_getAll() {
-        Set<Employee> employee = this.repository.getAll();
-        System.out.println("In getall, all = " + employee);
+        Set<Employee> employeeSet = service.getAll();
+        Assert.assertNotNull(employeeSet);
     }
+
 }

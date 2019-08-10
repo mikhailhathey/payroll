@@ -3,6 +3,7 @@ package com.hathey.service.demography.impl;
 import com.hathey.domain.demography.Race;
 import com.hathey.factory.demography.RaceFactory;
 import com.hathey.repository.demography.impl.RaceRepositoryImpl;
+import com.hathey.service.demography.RaceService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -17,52 +18,70 @@ import static org.junit.Assert.*;
 public class RaceServiceImplTest {
     private RaceRepositoryImpl repository;
     private Race race;
+    private RaceService service;
 
-    private Race getSaved(){
-        return this.repository.getAll().iterator().next();
-    }
 
     @Before
     public void setUp() throws Exception {
-        this.repository = (RaceRepositoryImpl) RaceRepositoryImpl.getRepository();
-        this.race = RaceFactory.buildRace("Indian");
+        this.service = RaceServiceImpl.getRaceService();
     }
 
     @Test
     public void a_create() {
-        Race created = this.repository.create(this.race);
-        System.out.println("In create, created = " + created);
-        Assert.assertNotNull(created);
-        Assert.assertSame(created, this.race);
+        Race employee = RaceFactory.buildRace("Indian");
+
+        service.create(employee);
+
+        Race inRepo = service.read(employee.getId());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void c_update() {
-        String newRaceName = "Indian";
-        Race updated = new Race.Builder().copy(getSaved()).description(newRaceName).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newRaceName, updated.getDescription());
+        Race employee = RaceFactory.buildRace("Indian");
+
+        service.create(employee);
+        Race inRepo = service.read(employee.getId());
+
+        employee.setDescription("Mikhail");
+
+        service.update(employee);
+
+        Assert.assertEquals(employee.getId(), inRepo.getId());
     }
 
     @Test
     public void e_delete() {
-        Race saved = getSaved();
-        this.repository.delete(saved.getDescription());
-        d_getAll();
+        Race employee = RaceFactory.buildRace("Indian");
+
+        service.create(employee);
+
+        Race inRepo = service.read(employee.getId());
+
+        Assert.assertNotNull(inRepo);
+
+        service.delete(employee.getId());
+
+        Race deleted = service.read(employee.getId());
+
+        Assert.assertNull(deleted);
     }
 
     @Test
     public void b_read() {
-        Race saved = getSaved();
-        Race read = this.repository.read(saved.getDescription());
-        System.out.println("In read, read = "+ read);
-        Assert.assertSame(read, saved);
+        Race employee = RaceFactory.buildRace("Indian");
+
+        service.create(employee);
+
+        Race inRepo = service.read(employee.getId());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void d_getAll() {
-        Set<Race> race = this.repository.getAll();
-        System.out.println("In getall, all = " + race);
+        Set<Race> employeeSet = service.getAll();
+        Assert.assertNotNull(employeeSet);
     }
 }

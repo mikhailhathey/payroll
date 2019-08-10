@@ -3,6 +3,7 @@ package com.hathey.service.user.impl;
 import com.hathey.domain.user.EmployeeGender;
 import com.hathey.factory.user.EmployeeGenderFactory;
 import com.hathey.repository.user.impl.EmployeeGenderRepositoryImpl;
+import com.hathey.service.user.EmployeeGenderService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -17,52 +18,70 @@ import static org.junit.Assert.*;
 public class EmployeeGenderServiceImplTest {
     private EmployeeGenderRepositoryImpl repository;
     private EmployeeGender employeeGender;
+    private EmployeeGenderService service;
 
-    private EmployeeGender getSaved(){
-        return this.repository.getAll().iterator().next();
-    }
 
     @Before
     public void setUp() throws Exception {
-        this.repository = (EmployeeGenderRepositoryImpl) EmployeeGenderRepositoryImpl.getRepository();
-        this.employeeGender = EmployeeGenderFactory.buildEmployeeGender("", "");
+        this.service = EmployeeGenderServiceImpl.getEmployeeGenderService();
     }
 
     @Test
     public void a_create() {
-        EmployeeGender created = this.repository.create(this.employeeGender);
-        System.out.println("In create, created = " + created);
-        Assert.assertNotNull(created);
-        Assert.assertSame(created, this.employeeGender);
+        EmployeeGender employee = EmployeeGenderFactory.buildEmployeeGender("567", "098");
+
+        service.create(employee);
+
+        EmployeeGender inRepo = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void c_update() {
-        String newEmployeeGenderName = "Male";
-        EmployeeGender updated = new EmployeeGender.Builder().copy(getSaved()).employeeNumber(newEmployeeGenderName).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newEmployeeGenderName, updated.getEmployeeNumber());
+        EmployeeGender employee = EmployeeGenderFactory.buildEmployeeGender("567", "098");
+
+        service.create(employee);
+        EmployeeGender inRepo = service.read(employee.getEmployeeNumber());
+
+        employee.setEmployeeNumber("765");
+
+        service.update(employee);
+
+        Assert.assertEquals(employee.getEmployeeNumber(), inRepo.getEmployeeNumber());
     }
 
     @Test
     public void e_delete() {
-        EmployeeGender saved = getSaved();
-        this.repository.delete(saved.getEmployeeNumber());
-        d_getAll();
+        EmployeeGender employee = EmployeeGenderFactory.buildEmployeeGender("567", "098");
+
+        service.create(employee);
+
+        EmployeeGender inRepo = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
+
+        service.delete(employee.getEmployeeNumber());
+
+        EmployeeGender deleted = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNull(deleted);
     }
 
     @Test
     public void b_read() {
-        EmployeeGender saved = getSaved();
-        EmployeeGender read = this.repository.read(saved.getEmployeeNumber());
-        System.out.println("In read, read = "+ read);
-        Assert.assertSame(read, saved);
+        EmployeeGender employee = EmployeeGenderFactory.buildEmployeeGender("567", "098");
+
+        service.create(employee);
+
+        EmployeeGender inRepo = service.read(employee.getEmployeeNumber());
+
+        Assert.assertNotNull(inRepo);
     }
 
     @Test
     public void d_getAll() {
-        Set<EmployeeGender> employeeGender = this.repository.getAll();
-        System.out.println("In getall, all = " + employeeGender);
+        Set<EmployeeGender> employeeSet = service.getAll();
+        Assert.assertNotNull(employeeSet);
     }
 }

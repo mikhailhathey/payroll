@@ -2,7 +2,17 @@ package com.hathey.domain.demography;
 
 public class Race {
 
-    private String id, description;
+    private String id;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String description;
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     private Race(){}
 
