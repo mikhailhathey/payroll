@@ -4,10 +4,12 @@ import com.hathey.domain.demography.Gender;
 import com.hathey.domain.demography.Race;
 import com.hathey.domain.user.Employee;
 import com.hathey.domain.user.EmployeeGender;
+import com.hathey.domain.user.EmployeeRace;
 import com.hathey.factory.demography.GenderFactory;
 import com.hathey.factory.demography.RaceFactory;
 import com.hathey.factory.user.EmployeeFactory;
 import com.hathey.factory.user.EmployeeGenderFactory;
+import com.hathey.factory.user.EmployeeRaceFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +33,7 @@ public class EmployeeControllerTest {
         Gender gender = GenderFactory.buildGender("Male");
         Race race = RaceFactory.buildRace("Indian");
         EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender("123", "123");
+        EmployeeRace employeeRace = EmployeeRaceFactory.buildEmployeeRace("123", "123");
         Employee employee = EmployeeFactory.buildEmployee("Mikhail", "Hathey");
 
         //employeeController.create(employee.getEmployeeNumber(), employee.getEmployeeFirstName() ,employee.getEmployeeLastName(), gender.getId(),race.getId());
